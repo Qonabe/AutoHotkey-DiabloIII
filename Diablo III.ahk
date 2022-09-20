@@ -9,6 +9,12 @@
  */
 KEY_MACRO:="XButton1"
 KEY_LOOT:="XButton2"
+KEY_DANCE:="^D"
+KEY_SWITCHSET1:="<+F1"
+KEY_SWITCHSET2:="<+F2"
+KEY_SWITCHSET3:="<+F3"
+KEY_SWITCHSET4:="<+F4"
+
 KEY_SKILL1:="Numpad1"
 KEY_SKILL2:="Numpad2"
 KEY_SKILL3:="Numpad3"
@@ -17,11 +23,6 @@ KEY_MAP:="Delete"
 KEY_OPENCHAT:="Enter"
 KEY_TELEPORTHOME:="NumpadDiv"
 KEY_MOVEGRABATTACK:="Click Left"
-KEY_DANCE:="^D"
-KEY_SWITCHSET1:="<+F1"
-KEY_SWITCHSET2:="<+F2"
-KEY_SWITCHSET3:="<+F3"
-KEY_SWITCHSET4:="<+F4"
 
 /*
  * Available sets
@@ -31,7 +32,7 @@ KEY_SWITCHSET4:="<+F4"
  *  - demonHunter: spam skills 1,2,3 and execute once skill 4 and Lshift+LClick
  *  - crusader: spam skill 4
  */
-availableSets:=["demonHunter", "crusader"]
+availableSets:=["demonHunter", "crusader", "", ""]
 
 /*
  * Should the macro alert you when you're switching sets? Some may like, some may not, in any case you can change it here
