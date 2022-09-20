@@ -14,9 +14,8 @@ If you only want to use the macro, the only section you should pay attention to 
 > \* HOTKEYS<br/>
 > \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*<br/>
 > \*/<br/>
-<br/>
-__Here is an explanation of each parameters__
-<br/>
+
+### Explanation of the different parameters
 
 ```KEY_MACRO:="XButton1"```<br/>
 Hotkey you want to use to activate/deactivate the macro
