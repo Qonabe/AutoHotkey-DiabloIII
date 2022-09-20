@@ -30,7 +30,7 @@ Hotkey you want to use to rapidly type "/dance" inchat
 ```KEY_SWITCHSET4:="<+F4"```<br/>
 Hotkey you want to use to switch between different sets of hotkeys
 
-
+<br/><br/>
 **The script also needs to know some of the keys you use ingame in order to work correctly**
 
 ```KEY_SKILL1:="Numpad1"```
@@ -51,7 +51,7 @@ Key used to teleport home INGAME
 ```KEY_MOVEGRABATTACK:="Click Left"```<br/>
 Key used to move your character home INGAME
 
-
+<br/><br/>
 **The script includes a way to switch between up to 4 different sets of hotkeys on the go**
 
 ```availableSets:=["demonHunter", "crusader", "", ""]```<br/>
