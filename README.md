@@ -1,11 +1,11 @@
-#Diablo III Macro
+# Diablo III Macro
 
 This macro is aimed to automate some basic things in Diablo III
 Keep in mind the Blizzard has never officially stated wether they authorize or not macros in this game. Use this macro at your own risks
 
 [Download Macro](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/BabbleBot/AutoHotkey-DiabloIII/blob/master/Diablo_III.ahk)
 
-##Basic use
+## Basic use
 
 If you only want to use the macro, the only section you should pay attention to is under
 
@@ -31,7 +31,8 @@ Hotkey you want to use to rapidly type "/dance" inchat
 Hotkey you want to use to switch between different sets of hotkeys
 
 <br/><br/>
-**The script also needs to know some of the keys you use ingame in order to work correctly**
+
+#### The script also needs to know some of the keys you use ingame in order to work correctly
 
 ```KEY_SKILL1:="Numpad1"```
 ```KEY_SKILL2:="Numpad2"```
@@ -52,7 +53,8 @@ Key used to teleport home INGAME
 Key used to move your character home INGAME
 
 <br/><br/>
-**The script includes a way to switch between up to 4 different sets of hotkeys on the go**
+
+#### The script includes a way to switch between up to 4 different sets of hotkeys on the go
 
 ```availableSets:=["demonHunter", "crusader", "", ""]```<br/>
 Enter in this list the sets you wanna be able to switch between
