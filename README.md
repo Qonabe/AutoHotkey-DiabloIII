@@ -15,7 +15,8 @@ If you only want to use the macro, the only section you should pay attention to 
 > \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*<br/>
 > \*/<br/>
 <br/>
-Here is an explanation of each parameters
+__Here is an explanation of each parameters__
+<br/>
 
 ```KEY_MACRO:="XButton1"```<br/>
 Hotkey you want to use to activate/deactivate the macro
@@ -33,7 +34,7 @@ Hotkey you want to use to rapidly type "/dance" inchat
 Hotkey you want to use to switch between different sets of hotkeys
 
 
-#### The script also needs to know some of the keys you use ingame in order to work correctly
+### The script also needs to know some of the keys you use ingame in order to work correctly
 
 ```KEY_SKILL1:="Numpad1"```
 ```KEY_SKILL2:="Numpad2"```
@@ -54,7 +55,7 @@ Key used to teleport home INGAME
 Key used to move your character home INGAME
 
 
-#### The script includes a way to switch between up to 4 different sets of hotkeys on the go
+### The script includes a way to switch between up to 4 different sets of hotkeys on the go
 
 ```availableSets:=["demonHunter", "crusader", "", ""]```<br/>
 Enter in this list the sets you wanna be able to switch between
