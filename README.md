@@ -3,7 +3,7 @@
 This macro is aimed to automate some basic things in Diablo III
 Keep in mind the Blizzard has never officially stated wether they authorize or not macros in this game. Use this macro at your own risks
 
-[Download Macro](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/BabbleBot/AutoHotkey-DiabloIII/blob/master/Diablo III.ahk)
+[Download Macro](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/BabbleBot/AutoHotkey-DiabloIII/blob/master/Diablo_III.ahk)
 
 ##Basic use
 
