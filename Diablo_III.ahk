@@ -189,7 +189,7 @@ LABEL_MACRO_CR:
 Return
 
 LABEL_MACRO_LOOTING:
-  While GetKeyState(%KEY_LOOT%, "P"){
+  While GetKeyState(KEY_LOOT, "P"){
     Send, {%KEY_MOVEGRABATTACK%}
     Sleep 10  ;  milliseconds
   }
