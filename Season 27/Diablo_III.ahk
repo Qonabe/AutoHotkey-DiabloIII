@@ -1,4 +1,4 @@
-﻿#MaxThreadsPerHotkey 2
+﻿#MaxThreadsPerHotkey 3
 #SingleInstance
 #Persistent
 
@@ -22,7 +22,6 @@ KEY_SKILL4:="Numpad4"
 KEY_MAP:="Delete"
 KEY_OPENCHAT:="Enter"
 KEY_TELEPORTHOME:="NumpadDiv"
-KEY_MOVEGRABATTACK:="Click Left"
 
 /*
  * Available sets
@@ -45,6 +44,7 @@ alertOnSetSwitch:=True
  **********************************************************************************************************************
  */
 global active:=False
+global holdRClick:=False
 global activeSet:=availableSets[1]
 
 #if (WinActive("Diablo III"))
@@ -59,6 +59,9 @@ Hotkey, if, (WinActive("Diablo III"))
   Hotkey, $%KEY_SWITCHSET2%, LABEL_SWITCH_SET2
   Hotkey, $%KEY_SWITCHSET3%, LABEL_SWITCH_SET3
   Hotkey, $%KEY_SWITCHSET4%, LABEL_SWITCH_SET4
+
+  ;
+  ; Hotkey, $RButton, LABEL_MACRO_RIGHT_CLICK
 
   ; Looting macro, spam Left Click
   Hotkey, $%KEY_LOOT%, LABEL_MACRO_LOOTING
@@ -75,20 +78,20 @@ Hotkey, if, (WinActive("Diablo III"))
   ; Dance!
   Hotkey, $%KEY_DANCE%, LABEL_MACRO_DANCE
 
-; Following hotkeys are only active if Diablo III window is in foreground AND currently active set if demonHunter
-Hotkey, if, (WinActive("Diablo III")) && (activeSet="demonHunter")
-  ; DH Strafe+impale build
-  Hotkey, $%KEY_MACRO%, LABEL_MACRO_DH
+  ; Following hotkeys are only active if Diablo III window is in foreground AND currently active set if demonHunter
+  Hotkey, if, (WinActive("Diablo III")) && (activeSet="demonHunter")
+    ; DH Strafe+impale build
+    Hotkey, $%KEY_MACRO%, LABEL_MACRO_DH
 
-; Following hotkeys are only active if Diablo III window is in foreground AND currently active set if crusader
-Hotkey, if, (WinActive("Diablo III")) && (activeSet="crusader")
-  ; Crusader
-  Hotkey, $%KEY_MACRO%, LABEL_MACRO_CR
+  ; Following hotkeys are only active if Diablo III window is in foreground AND currently active set if crusader
+  Hotkey, if, (WinActive("Diablo III")) && (activeSet="crusader")
+    ; Crusader
+    Hotkey, $%KEY_MACRO%, LABEL_MACRO_CR
 
-; Automatic disactivation of the macro when the Diablo III window looses focus
-Hotkey, if, (!WinActive("Diablo III"))
-  active:=False
-Hotkey, if
+  ; Automatic disactivation of the macro when the Diablo III window looses focus
+  Hotkey, if, (!WinActive("Diablo III"))
+    active:=False
+  Hotkey, if
 
 Return
 
@@ -136,6 +139,14 @@ LABEL_SWITCH_SET4:
     MsgBox % "No set registered at this hotkey"
 Return
 
+LABEL_MACRO_RIGHT_CLICK:
+    Send, {RButton}
+  While GetKeyState(RButton, "P"){
+    if active
+      Send, {LButton}
+  }
+Return
+
 LABEL_MACRO_DH:
   active:=!active
 
@@ -143,7 +154,7 @@ LABEL_MACRO_DH:
   * Execute first IMPALE and activate SHADOW POWER
   */
   If active {
-    Send, +{%KEY_MOVEGRABATTACK%}
+    Send, +{LButton}
     Send, {%KEY_SKILL4%}
   }
 
@@ -151,15 +162,12 @@ LABEL_MACRO_DH:
   * Endlessly activate the first 3 skills
   */
   While active and WinActive("Diablo III"){
-    if active {
+    if active
       Send, {%KEY_SKILL1%}
-    }
-    if active {
+    if active
       Send, {%KEY_SKILL2%}
-    }
-    if active {
+    if active
       Send, {%KEY_SKILL3%}
-    }
     Sleep 200
   }
 
@@ -190,7 +198,7 @@ Return
 
 LABEL_MACRO_LOOTING:
   While GetKeyState(KEY_LOOT, "P"){
-    Send, {%KEY_MOVEGRABATTACK%}
+    Send, {LButton}
     Sleep 10  ;  milliseconds
   }
 return
