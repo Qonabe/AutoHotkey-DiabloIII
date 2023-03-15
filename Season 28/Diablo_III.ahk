@@ -4,27 +4,16 @@
 
 /*
  **********************************************************************************************************************
- * TODO
-; Add "Only Activate macro when Right Click is pushed" option
- Display marker when macro is active
-;  Finish Blacksmith macro
-;  Finetune Urshi macro
-; Prevent macro activation if the chat is open
-;  fix strange prob preventing automatically reopening the chat after auto close
- See "Suspend"
- Add autodetection of cube page / backsmith / Urshi and put under same key press
- **********************************************************************************************************************
- */
-
-
-/*
- **********************************************************************************************************************
  * CONFIG
  **********************************************************************************************************************
  */
 KEY_MACRO:="XButton1"
 KEY_LOOT:="XButton2"
 KEY_DANCE:="^D"
+KEY_SALVAGE:="+NumpadMult"
+KEY_URSHI:="+NumpadDiv"
+KEY_CUBE_2:="+F2"
+KEY_CUBE_3:="+F3"
 KEY_SWITCHSET1:="<+F1"
 KEY_SWITCHSET2:="<+F2"
 KEY_SWITCHSET3:="<+F3"
@@ -35,31 +24,24 @@ KEY_SKILL2:="Numpad2"
 KEY_SKILL3:="Numpad3"
 KEY_SKILL4:="Numpad4"
 KEY_POTION:="Numpad5"
-KEY_SALVAGE:="+NumpadMult"
-KEY_URSHI:="+NumpadDiv"
-KEY_CUBE_2:="+F2"
-KEY_CUBE_3:="+F3"
 KEY_MAP:="Delete"
 KEY_OPENCHAT:="Enter"
 KEY_TELEPORTHOME:="NumpadDiv"
 
-; The period at which the different skills will be repeated in milliseconds
+; The period at which the different skills will be repeated in milliseconds.
+; Any key with a period set to 0 is disabled (will not be repeated by the script)
+; Any key with a period of -1 will be kept pressed on until the macro is stopped (usefull for skills you want to keep constantly active, ie the DH strafe)
+;
 PERIOD_SKILL_1 := 200
 PERIOD_SKILL_2 := 200
 PERIOD_SKILL_3 := 200
-PERIOD_SKILL_4 := 7000
-PERIOD_POTION := 7000
-PERIOD_LEFT_CLICK := 7000
+PERIOD_SKILL_4 := 1000
+PERIOD_POTION := 1000
+PERIOD_LEFT_CLICK := 2000
+PERIOD_RIGHT_CLICK := 0 ; -1 not recommanded at the moment due to strange behavior
 
 ; Do you want the macro to be constantly runing when it is active or to require pressing the right mouse button ?
-MACRO_REQUIRES_RMB := False
-
-; Do you want the macro to be active from the start?
-MACRO_START_ACTIVATED := False
-
-; Do you want the macro to hold the right mouse button down?
-MACRO_KEEPS_RCLICK_DOWN := True
-
+MACRO_REQUIRES_RMB := True
 
 /*
  **********************************************************************************************************************
@@ -83,7 +65,7 @@ MACRO_KEEPS_RCLICK_DOWN := True
  * LOGIC
  **********************************************************************************************************************
  */
-global active := MACRO_START_ACTIVATED
+global active := False
 
 #if (WinActive("Diablo III"))
 #if (!WinActive("Diablo III"))
@@ -278,23 +260,28 @@ LABEL_MACRO:
   active:=!active
 
   if active {
-    setTimer, autoMacrodisabler, 1, 0
+    ; setTimer, autoMacrodisabler, 1, 10
 
-    setTimer, LABEL_MACRO_SKILL_1, %PERIOD_SKILL_1%
-    setTimer, LABEL_MACRO_SKILL_2, %PERIOD_SKILL_2%
-    setTimer, LABEL_MACRO_SKILL_3, %PERIOD_SKILL_3%
+    if PERIOD_SKILL_1
+      setTimer, LABEL_MACRO_SKILL_1, %PERIOD_SKILL_1%
 
-    sleep 50
-    setTimer, LABEL_MACRO_SKILL_4, 7000
+    if PERIOD_SKILL_2
+      setTimer, LABEL_MACRO_SKILL_2, %PERIOD_SKILL_2%
 
-    sleep 50
-    setTimer, LABEL_MACRO_SKILL_POTION, 1000, 1
+    if PERIOD_SKILL_3
+      setTimer, LABEL_MACRO_SKILL_3, %PERIOD_SKILL_3%
 
-    sleep 50
-    setTimer, LABEL_MACRO_SKILL_LEFT_CLICK, 2000, 10
+    if PERIOD_SKILL_4
+      setTimer, LABEL_MACRO_SKILL_4, %PERIOD_SKILL_4%
 
-    if MACRO_KEEPS_RCLICK_DOWN
-      setTimer, LABEL_MACRO_SKILL_RIGHT_CLICK, 200
+    if PERIOD_POTION
+      setTimer, LABEL_MACRO_SKILL_POTION, %PERIOD_POTION%, 1
+
+    if PERIOD_LEFT_CLICK
+      setTimer, LABEL_MACRO_SKILL_LEFT_CLICK, %PERIOD_LEFT_CLICK%, 2
+
+    if PERIOD_RIGHT_CLICK
+      setTimer, LABEL_MACRO_SKILL_RIGHT_CLICK, %PERIOD_RIGHT_CLICK%
   }
 Return
 
